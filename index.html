@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pixel Tube</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: #181818;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.logo {
+    color: #ff3333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search {
+    display: flex;
+    gap: 5px;
+}
+
+input {
+    width: 180px;
+    max-width: 60vw;
+    padding: 12px;
+    background: #252525;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 25px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #ff3030;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+nav {
+    padding: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+nav button {
+    background: #303030;
+    margin-right: 5px;
+}
+
+nav button:hover {
+    background: #555;
+}
+
+h2 {
+    padding: 0 15px;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    padding: 15px;
+}
+
+.card {
+    background: #202020;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+.card h3 {
+    margin: 12px;
+    font-size: 17px;
+}
+
+.card p {
+    margin: 12px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.card a {
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: #999;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">▶ PIXEL TUBE</div>
+
+    <div class="search">
+        <input
+            id="search"
+            type="search"
+            placeholder="Search videos..."
+        >
+        <button onclick="searchVideos()">Search</button>
+    </div>
+</header>
+
+<nav>
+    <button onclick="filterVideos('All')">All</button>
+    <button onclick="filterVideos('Minecraft')">Minecraft</button>
+    <button onclick="filterVideos('Gaming')">Gaming</button>
+    <button onclick="filterVideos('Shorts')">Shorts</button>
+</nav>
+
+<h2>Recommended Videos</h2>
+
+<div class="videos" id="videos">
+
+    <div class="card" data-category="Minecraft">
+        <a href="https://www.youtube.com/results?search_query=Minecraft+SMP"
+           target="_blank" rel="noopener">
+            <img
+                src="https://placehold.co/640x360/24552b/ffffff?text=Minecraft+SMP"
+                alt="Minecraft SMP">
+            <h3>Minecraft SMP Gameplay</h3>
+        </a>
+        <p>Discover Minecraft SMP videos</p>
+    </div>
+
+    <div class="card" data-category="Gaming">
+        <a href="https://www.youtube.com/results?search_query=Gaming"
+           target="_blank" rel="noopener">
+            <img
+                src="https://placehold.co/640x360/333333/ffffff?text=Gaming"
+                alt="Gaming videos">
+            <h3>Best Gaming Videos</h3>
+        </a>
+        <p>Explore gaming content</p>
+    </div>
+
+    <div class="card" data-category="Minecraft">
+        <a href="https://www.youtube.com/results?search_query=Minecraft+Survival"
+           target="_blank" rel="noopener">
+            <img
+                src="https://placehold.co/640x360/225577/ffffff?text=Survival"
+                alt="Minecraft Survival">
+            <h3>Minecraft Survival</h3>
+        </a>
+        <p>Start your survival adventure</p>
+    </div>
+
+    <div class="card" data-category="Shorts">
+        <a href="https://www.youtube.com/results?search_query=Gaming+Shorts"
+           target="_blank" rel="noopener">
+            <img
+                src="https://placehold.co/640x360/772244/ffffff?text=Gaming+Shorts"
+                alt="Gaming Shorts">
+            <h3>Gaming Shorts</h3>
+        </a>
+        <p>Explore short gaming videos</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>Welcome to Pixel Tube!</p>
+    <p>Made for gaming lovers.</p>
+</footer>
+
+<script>
+function searchVideos() {
+    const query = document
+        .getElementById("search")
+        .value
+        .toLower
